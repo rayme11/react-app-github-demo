@@ -28,9 +28,20 @@ jobs:
       - run: npm --version
         env:
           CI: true
+      - name: Upload Test Coverage
+        uses: actions/upload-artifact@v1
+        with:
+          name: code-coverage
+          path: coverage
       - name: Build Project
         if: github.event_name == 'push'
         run: npm run build
+      - name: Upload build folder
+        uses: actions/upload-artifact@v1
+        with:
+          name: build
+          path: build
+      - uses: actions/download-artifact
       - name: Deploy to Staging
         if: github.event_name == 'push'
         run: npx surge --project ./build --domain courageous-cause.surge.sh
