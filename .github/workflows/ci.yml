@@ -1,9 +1,9 @@
 name: CI
 on:
   pull_request:
-    branches: [develop, master]
+    branches: [develop, master, workflow]
   push:
-    branches: [develop, master]
+    branches: [develop, master, workflow]
 
 jobs:
   build:
@@ -36,7 +36,7 @@ jobs:
         with:
           name: code-coverage
           path: coverage
-      - name: Build Project
+      - name: Build Project with npm run build
         if: github.event_name == 'push'
         run: npm run build
       - name: Upload build folder
