@@ -7,6 +7,14 @@ jobs:
   slack-message:
     runs-on: ubuntu-latest
     steps:
-      - name: Slack Message
-        run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' ${{ secrets.SLACK }}
+      - uses: actions/checkout@v2
+      - name: Notify Slack
+        uses: drilonrecica/action-slack-notify@0.0.3
+        env:
+          SLACK_CHANNEL: general
+          SLACK_COLOR: '#3278BD'
+          SLACK_ICON: https://upload.wikimedia.org/wikipedia/commons/6/68/NoxttonBot.png?size=48
+          SLACK_MESSAGE: 'There is a new release'
+          SLACK_TITLE: There is a new release
+          SLACK_USERNAME: rayme11
+          SLACK_WEBHOOK: ${{ secrets.SLACK }}
