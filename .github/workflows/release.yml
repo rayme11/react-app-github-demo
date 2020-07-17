@@ -15,6 +15,6 @@ jobs:
           SLACK_COLOR: '#3278BD'
           SLACK_ICON: https://upload.wikimedia.org/wikipedia/commons/6/68/NoxttonBot.png?size=48
           SLACK_MESSAGE: 'There is a new release '
-          SLACK_TITLE: ${{ github.release.tag_name }}
+          SLACK_TITLE: There is a new release
           SLACK_USERNAME: rayme11
           SLACK_WEBHOOK: ${{ secrets.SLACK }}
